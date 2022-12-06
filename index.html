@@ -6,7 +6,13 @@
                 get: (searchParams, prop) => searchParams.get(prop),
             });
 
-            window.location.href = `http://localhost:8765/authcode?code=${params.code}`;
+            const url = atob(params.state);
+
+            if (url && params.code)
+            {
+                window.location.href = `http://${url}/authcode?code=${params.code}`;
+            }
+
         </script>
     </head>
     <body>
