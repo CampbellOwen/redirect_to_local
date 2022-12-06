@@ -1,6 +1,13 @@
 <html>
     <head>
         <title>Redirect To Local Address</title>
+        <script type="application/javascript">
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+            });
+
+            window.location.href = `localhost:8765/authcode?code=${params.code}`;
+        </script>
     </head>
     <body>
         TEST
